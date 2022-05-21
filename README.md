@@ -50,6 +50,43 @@ Some classifiers can produce some certanty measure of the prediction (e.g. proba
 
 Such an approach can be used to build a classifier based on correlations. Duan et al [2] use the correlations in the Dicriminative PCA space. We also implemented this approach.
 
+# Running the code
+
+1. Install dependencies:
+
+```bash
+$ pip install -r requirements.txt
+```
+
+Entrypoint for the code is the file [main.py](scripts/main.py) in the scripts directory. It has two modes:
+
+## Training models
+```
+usage: main.py train [-h] -i -0 -P --models [...] - -n_genes --threshold --n_jobs
+optional arguments:
+-h, --help      show this help message and exit
+-i, --input     Path to scRNA-seq dataset(s)
+-o, --output    Path to the folder with results
+-p , --path     Path to the folder with models
+--models [...]  Names of the models to train. Available: svc, rforest, lgbm, corr
+--n_genes       Number of genes to select for models training
+--threshold     1 - if we want to use adaptive threshold, else 0
+--n jobs        Number of jobs to run in parallel.
+```
+
+## Making predictions
+```bash
+usage: main. py predict [-h] -i -o -p --models [...] --n_genes --benchmarking --n_jobs
+-h, --help      show this help message and exit
+-i, --input     Path to scRNA-seq dataset(s)
+-o, --output    Path to the folder with results
+-p , --path     Path to the folder with models
+--models [...]  Names of the models to train. Available: svc, rforest, lgbm, corr
+--n_genes       Number of genes to select for models training
+--benchmarking  0 if we want to run benchmarking, else 1
+--n jobs        Number of jobs to run in parallel.
+```
+
 # References
 1. Abdelaal, T., Michielsen, L., Cats, D. et al. A comparison of automatic cell identification methods for single-cell RNA sequencing data. Genome Biol 20, 194 (2019). https://doi.org/10.1186/s13059-019-1795-z
 2. B. Duan, C. Zhu, G. Chuai, C. Tang, X. Chen, S. Chen, S. Fu, G. Li, Q. Liu, Learning for single-cell assignment. Sci. Adv. 6, eabd0855 (2020)
