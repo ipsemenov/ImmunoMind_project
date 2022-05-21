@@ -58,7 +58,7 @@ Such an approach can be used to build a classifier based on correlations. Duan e
 $ pip install -r requirements.txt
 ```
 
-Entrypoint for the code is the file [main.py](scripts/main.py) in the scripts directory. It has two modes:
+2. Entrypoint for the code is the file [main.py](scripts/main.py) in the scripts directory. It has two modes:
 
 ## Training models
 ```
