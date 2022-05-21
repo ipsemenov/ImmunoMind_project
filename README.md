@@ -19,3 +19,18 @@ The project was made for the [ImmunoMind Inc](https://immunomind.io) as a part o
 
 ![Poster](images/poster.png)
 
+# Datasets
+
+# Trained models
+
+## Support Vector Machine Classifier
+
+## Random Forest Classifier
+
+## LightGBM Classifier
+
+## Correlations Classifier
+
+## Hierarchical binary classificators
+
+# Labelling the unassigned cells
