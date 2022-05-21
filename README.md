@@ -15,3 +15,7 @@ Supervisors:
 
 The project was made for the [ImmunoMind Inc](https://immunomind.io) as a part of the education at the [Bioinformatics Institute](https://bioinf.me/en/education).
 
+# Graphical abstract
+
+![Poster](images/poster.png)
+
