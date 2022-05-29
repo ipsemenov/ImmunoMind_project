@@ -15,6 +15,17 @@ Supervisors:
 
 The project was made for the [ImmunoMind Inc](https://immunomind.io) as a part of the education at the [Bioinformatics Institute](https://bioinf.me/en/education).
 
+# Content
+- [Graphical abstract](https://github.com/ipsemenov/ImmunoMind_project#graphical-abstract)
+- [Aims](https://github.com/ipsemenov/ImmunoMind_project#aims)
+- [Results](https://github.com/ipsemenov/ImmunoMind_project#results)
+- [Datasets](https://github.com/ipsemenov/ImmunoMind_project#datasets)
+- [Obtained metrics](https://github.com/ipsemenov/ImmunoMind_project#obtained-metrics)
+- [Labeling the unassigned cells](https://github.com/ipsemenov/ImmunoMind_project#labelling-the-unassigned-cells)
+- [Running the code](https://github.com/ipsemenov/ImmunoMind_project#running-the-code)
+- [Conclusions](https://github.com/ipsemenov/ImmunoMind_project#conclusions)
+- [References](https://github.com/ipsemenov/ImmunoMind_project#references)
+
 # Graphical abstract
 
 ![Poster](images/poster.png)
@@ -30,7 +41,7 @@ The project was made for the [ImmunoMind Inc](https://immunomind.io) as a part o
 - Collected datasets for benchmark
 - Implemented  an approach to mark uncertain predictions with individual thresholds  for each cell type
 - Trained and compared ML models for cell type classification:
-- - Support Vector Machine Classifier (showed the 
+- - Support Vector Machine Classifier (showed the best f1-macro score among all the classifiers)
 - - Random Forest Classifier
 - - LightGBM Classifier
 - - Hierarchical binary classificators
@@ -61,10 +72,6 @@ All the models below were trained on the dataset pbmc1_10x_v2 and tested on the 
 
 **Figure 4.** Metrics on the test datasets with prediction of unassigned cells
 ![all_cell_types_threshold.png](images/not_all_cell_types_threshold.png)
-
-Conclusions:
-- Support Vector Machine Classifier shows the best f1-score 
-- If the model is trained on the data from one protocol (e.g. 10X), it performs good at the different data from the same protocol. However, for the data from different protocol (e.g. Dropseq), metrics are worse. Train you model on the data from suitable protocol!
 
 # Labelling the unassigned cells
 Some classifiers can produce some certanty measure of the prediction (e.g. probabillity). It can be used to mark uncertain predictions. But how to define an optimal threshold for the classificator? Duan et al [2] suggested using the 1st percentile of the certanty for each class. E. g. such value that 99% of cells of that class have the higher certainty.
@@ -101,6 +108,13 @@ classifier = CalibratedThresholdsClassifier(model, cv=3)
 classifier.fit(X, y)
 classifier.predict(X_test)  # Predicts not only cells types from train, but also "unassigned" class
 ```
+
+# Conclusions
+
+- **Pipeline** for classification of cell types with SOTA-models implementation was developed
+- **Adaptive thresholds** allow to identify cells that do not belong to any class represented in the train dataset
+- **Support Vector Machine Classifier** is the optimal model for immune cells’ types prediction
+- Difference in the **laboratory protocol** for train and test data influence metrics. Model used in the production, should be trained on data from the same protocol
 
 # Running the code
 
